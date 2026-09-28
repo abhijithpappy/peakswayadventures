@@ -262,6 +262,8 @@ p { margin: 0 0 1em; }
 .avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--forest); color: var(--white); display: grid; place-items: center; font-family: var(--font-head); letter-spacing: .05em; }
 .sample-tag { position: absolute; top: 12px; right: 12px; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); border: 1px dashed #c9c6bc; border-radius: 999px; padding: .15em .7em; }
 .review-cta { text-align: center; margin-top: 2.5rem; }
+.review-cta p { color: var(--muted); margin-bottom: .9rem; }
+.review-cta .review-note { font-size: .82rem; margin: .8rem 0 0; }
 
 /* ---------- Plan / enquiry ---------- */
 .plan { background: var(--cream); }
