@@ -244,6 +244,25 @@ p { margin: 0 0 1em; }
 .g-item img { width: 100%; transition: transform .5s, filter .5s; }
 .g-item:hover img { transform: scale(1.04); filter: brightness(1.05); }
 
+/* ---------- Reviews ---------- */
+.reviews { background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%); }
+.review-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review-card {
+  position: relative; margin: 0;
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 1.8rem 1.6rem 1.5rem;
+  display: flex; flex-direction: column;
+  border-top: 4px solid var(--sun);
+}
+.review-card blockquote { margin: .6rem 0 1.4rem; color: var(--ink); font-size: .98rem; line-height: 1.65; flex: 1; }
+.stars { color: var(--sun-2); letter-spacing: .12em; font-size: 1.05rem; }
+.review-card figcaption { display: flex; align-items: center; gap: .8rem; border-top: 1px solid #eceae3; padding-top: 1rem; }
+.review-card figcaption strong { display: block; color: var(--navy); }
+.review-card figcaption small { color: var(--muted); font-size: .82rem; }
+.avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--forest); color: var(--white); display: grid; place-items: center; font-family: var(--font-head); letter-spacing: .05em; }
+.sample-tag { position: absolute; top: 12px; right: 12px; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); border: 1px dashed #c9c6bc; border-radius: 999px; padding: .15em .7em; }
+.review-cta { text-align: center; margin-top: 2.5rem; }
+
 /* ---------- Plan / enquiry ---------- */
 .plan { background: var(--cream); }
 .plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
@@ -349,6 +368,7 @@ p { margin: 0 0 1em; }
   .trek-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-cards { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .review-track { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -391,4 +411,6 @@ p { margin: 0 0 1em; }
   .enquiry .row { grid-template-columns: 1fr 1fr; }
   .hero-actions .btn { flex: 1; padding: .9em 1em; white-space: nowrap; }
   .scroll-cue { display: none; }
+  .review-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 12px; margin-inline: -16px; padding-inline: 16px; }
+  .review-card { flex: 0 0 85%; scroll-snap-align: center; }
 }
