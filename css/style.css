@@ -193,13 +193,17 @@ p { margin: 0 0 1em; }
   color: var(--white);
   text-align: center;
 }
-.quote-band::before { content: ""; position: absolute; inset: 0; background: rgba(8, 14, 30, .45); }
+.quote-band { overflow: hidden; }
+.band-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.quote-band::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(8, 14, 30, .45); }
+.quote-band .container { position: relative; z-index: 2; }
+.quote-band.has-video { min-height: min(85vh, 760px); display: flex; align-items: center; padding: 80px 0; }
 .quote-band blockquote { position: relative; margin: 0 auto; max-width: 820px; }
 .quote-band p { font-family: var(--font-head); text-transform: uppercase; font-size: clamp(1.8rem, 4.6vw, 3.4rem); line-height: 1.15; margin: 0; }
 .quote-band blockquote::after { content: ""; display: block; width: 70px; height: 3px; background: var(--sun); margin: 1.6rem auto 0; }
 
 @media (min-width: 900px) {
-  .quote-band, .contact { background-attachment: fixed; }
+  .quote-band:not(.has-video), .contact { background-attachment: fixed; }
 }
 
 /* ---------- Section head ---------- */

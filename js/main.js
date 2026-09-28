@@ -119,6 +119,29 @@ document.documentElement.classList.remove("no-js");
     if (e.key === "ArrowRight") show(current + 1);
   });
 
+  // Sunrise background video: load only when the section is near the screen,
+  // play while visible, and skip it for people who prefer reduced motion
+  var bandVideo = document.querySelector(".band-video");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (bandVideo && !reduceMotion && "IntersectionObserver" in window) {
+    var videoIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (!bandVideo.dataset.loaded) {
+            bandVideo.querySelectorAll("source").forEach(function (s) { s.src = s.getAttribute("data-src"); });
+            bandVideo.dataset.loaded = "1";
+            bandVideo.load();
+          }
+          var p = bandVideo.play();
+          if (p && p.catch) p.catch(function () {});
+        } else if (bandVideo.dataset.loaded) {
+          bandVideo.pause();
+        }
+      });
+    }, { rootMargin: "200px 0px" });
+    videoIo.observe(bandVideo);
+  }
+
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
